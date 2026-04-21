@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solveit Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <!-- Header -->
+    <header class="options-header">
+      <div class="header-left">
+        <div class="header-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <div>
+          <h1 class="header-title">Solveit Dashboard</h1>
+          <p class="header-sub">Manage your engines, memory context, and preferences</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="saveAllBtn" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save All Changes
+        </button>
+      </div>
+    </header>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <main>
+      <!-- Providers Section -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Verified AI Engines</h2>
+          <p class="section-desc">Connect multiple AI API keys to enable automatic Cross-Verification Debate. The more nodes connected, the higher your accuracy on difficult forms.</p>
+        </div>
+        <div class="providers-grid" id="providersGrid">
+          <!-- Filled dynamically via JS -->
+        </div>
+        <button id="addCustomBtn" class="btn btn-outline" style="margin-top: 10px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Custom Provider
+        </button>
+      </section>
+
+      <!-- Memory Reservoir Section -->
+      <section class="section">
+        <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div>
+            <h2 class="section-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              Personal Memory Reservoir
+            </h2>
+            <p class="section-desc">Bifurcated structured data exactly as you requested. We intelligently pass this dictionary into the solver to answer matching personal forms completely autonomously.</p>
+          </div>
+          <button id="micBtn" class="btn btn-outline" style="min-width: 160px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+            Dictate with AI
+          </button>
+        </div>
+        <div class="settings-card">
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-label">Full Name</label>
+              <span class="setting-desc">Legal name or preferred format.</span>
+            </div>
+            <input type="text" id="memName" class="setting-input" style="width:280px; text-align:left;" placeholder="John H. Doe">
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-label">Email Address</label>
+            </div>
+            <input type="email" id="memEmail" class="setting-input" style="width:280px; text-align:left;" placeholder="john@example.com">
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-label">Phone Number</label>
+            </div>
+            <input type="text" id="memPhone" class="setting-input" style="width:280px; text-align:left;" placeholder="+1 234 567 8900">
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-label">Academic / Employee ID</label>
+              <span class="setting-desc">Roll number, SSN, or registration ID.</span>
+            </div>
+            <input type="text" id="memId" class="setting-input" style="width:280px; text-align:left;" placeholder="ID-827364">
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-label">Organization / Major</label>
+              <span class="setting-desc">University name, Degree, or Company tier.</span>
+            </div>
+            <input type="text" id="memOrg" class="setting-input" style="width:280px; text-align:left;" placeholder="Computer Science, MIT">
+          </div>
+          <div class="setting-row" style="flex-direction: column; align-items: flex-start; padding-bottom: 24px;">
+            <div class="setting-info">
+              <label class="setting-label">Custom Auxiliary Notes</label>
+              <span class="setting-desc">Bank routing numbers, emergency contacts, addresses, or any custom unstructured text.</span>
+            </div>
+            <textarea id="memNotes" class="memory-textarea" placeholder="Example: Emergency Contact = Jane Doe (+1 999 888 7777). Bank routing = 111000111."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- General Settings Section -->
+      <section class="section" style="margin-bottom: 100px;">
+        <div class="section-header">
+          <h2 class="section-title">Solver Preferences</h2>
+        </div>
+        <div class="settings-card">
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-label">Timeout (seconds)</label>
+              <p class="setting-desc">Maximum waiting duration per model.</p>
+            </div>
+            <input type="number" id="timeoutSetting" class="setting-input" value="15" min="5" max="60" step="1">
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-label">Minimum models for consensus</label>
+              <p class="setting-desc">Minimum API nodes reacting for the debate algorithm.</p>
+            </div>
+            <input type="number" id="minModelsSetting" class="setting-input" value="2" min="1" max="7" step="1">
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-label">Confidence threshold (%)</label>
+              <p class="setting-desc">Threshold for strict confidence coloring UI.</p>
+            </div>
+            <input type="number" id="confidenceSetting" class="setting-input" value="50" min="0" max="100" step="5">
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

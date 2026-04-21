@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=400, initial-scale=1.0">
+  <title>Solveit Dashboard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-group">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+      </div>
+      <div>
+        <h1 class="logo-text">Solveit Form AI</h1>
+        <p class="logo-sub">Automated Web Assistant</p>
+      </div>
+    </div>
+    <button id="settingsBtn" class="icon-btn" title="Settings">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+      </svg>
+    </button>
+  </header>
+
+  <main class="container">
+    
+    <!-- Info Bar -->
+    <div class="info-row" id="providersBar">
+      <span class="info-label">Active Engines</span>
+      <div class="providers-dots" id="providerDots">
+        <span style="font-size: 13px; color: var(--text-dim); font-weight: 500;">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Status Boxes -->
+    <div class="status-grid">
+      <div class="status-card">
+        <span class="status-label">Current Status</span>
+        <span class="status-value" id="statusText">Ready</span>
+      </div>
+      <div class="status-card">
+        <span class="status-label">Fields Filled</span>
+        <span class="status-value" id="questionCount">—</span>
+      </div>
+    </div>
+
+    <!-- Progress Notification (Hidden default) -->
+    <div class="progress-container" id="progressContainer" style="display: none;">
+      <div class="progress-text" id="progressText">Analyzing Page...</div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- Error Banner (Hidden default) -->
+    <div class="error-banner" id="errorPanel" style="display:none;">
+      <span class="error-text" id="errorText">Connection Error</span>
+      <button id="retryBtn" class="retry-btn">Dismiss & Retry</button>
+    </div>
+
+    <!-- Primary Action -->
+    <div>
+      <button id="solveBtn" class="solve-btn">
+        <svg class="solve-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 11 12 14 22 4"></polyline>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+        <span class="solve-text">PROCESS ACTIVE PAGE</span>
+      </button>
+      <p class="shortcut-text">Keyboard Shortcut: <span class="shortcut-key">Alt + S</span></p>
+    </div>
+
+    <!-- Results Data Accordion (Hidden default) -->
+    <div class="context-panel" id="resultsPanel" style="display:none;">
+      <div class="context-header">
+        <span>Processed Match Data</span>
+        <button id="clearBtn" class="clear-btn">Clear Form</button>
+      </div>
+      <div class="context-body" id="resultsList">
+        <!-- Results inject here -->
+      </div>
+    </div>
+
+  </main>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
