@@ -286,6 +286,9 @@ async function loadProviders() {
   const providers = [];
   for (const [key, preset] of Object.entries(PROVIDER_PRESETS)) {
     const merged = { ...preset, ...(configs[key] || {}), name: key };
+    if (merged.model === 'google/gemini-2.0-flash-lite-preview-02-05:free') {
+      merged.model = 'mistralai/mistral-7b-instruct:free';
+    }
     if (merged.apiKey && merged.enabled !== false) providers.push(createProvider(merged));
   }
   (configs._custom || []).forEach((c, i) => {
